@@ -40,6 +40,8 @@ const el = {
 }
 
 getScoreboard();
+init();
+
 // Initial conditions
 function init() {
   deactivateElement('input-decks', false);
@@ -47,7 +49,6 @@ function init() {
   setDeck(); // creates unshuffled deck
   deck = multiplyArray(deck, numOfDecks); // multiply deck
   shuffle(deck, shuffled);
-  console.log('test');
   deactivateElement('btn-cashout', true);
 }
 
@@ -58,7 +59,6 @@ function initialDeal() {
     alert('Number of decks should be between 1 and 20!');
     return;
   }
-  init();
   if(!el.playerName.value) {
     alert("What's your name? Fill the input, please.")
     return;
@@ -235,7 +235,6 @@ function addCard(place_id) {
     let place = document.getElementById(place_id); // create card
     let card = document.createElement("div");
     card.setAttribute("class", "card");
-    console.log('shuffled', shuffled);
     card.innerHTML =
         '<img id="symbol-top" class="symbol-top" src= "./images/' +
         shuffled[cardNum][1] +
@@ -293,7 +292,6 @@ function addCard(place_id) {
         el.playerHeader.textContent =
           "Player: " + (ace_hard_p <= 21 ? ace_hard_p : ace_soft_p); // display result using better ace
     }
-    console.log('ph', el.playerHeader);
     value = count(shuffled[cardNum][0]);
     cardNum++; // pointing to the next card in deck
     place.appendChild(card);
@@ -471,9 +469,8 @@ function closeDialog() {
 function cashout() {
   const answer = window.confirm("Are you sure?");
   if(answer) {
-    console.log("Your final balance: " + balance);
     sendResult();
-
+    init();
   }
 }
 
