@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="blackjack.css" />
+  </head>
+  <body>
+
+    <details>
+      <summary>README</summary>
+      <div class="readme">
+        <p>Blackjack game</p>
+        <p>Try to beat the dealer. You start with 500$. Good luck!</p>
+        <a href="https://github.com/kl4532/black-jack"
+          >Project on github</a
+        >
+      </div>
+    </details>
+
+    <div class="frame">
+
+      <div class="playground">
+        <div id="dealerValue" class="dealerValue">
+          <h2>Dealer: 0</h2>
+        </div>
+        <div id="dealerCards" class="dealerCards"></div>
+        <div id="playerValue" class="playerValue">
+          <h2>Player: 0</h2>
+        </div>
+        <div id="playerCards" class="playerCards"></div>
+      </div>
+
+      <section class="controls">
+        <div class="scoreboard-container">
+          <h3>TOP 10</h3>
+          <table>
+            <thead>
+            <tr>
+              <th>Place</th>
+              <th>Name</th>
+              <th>Score</th>
+              <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+        </div>
+        <div class="options">
+          <div class="decks">
+            <label for="">Decks</label>
+            <input id="input-decks" class="deck-num" type="number" min="1" max="20" value=2>
+          </div>
+          <div class="buttons">
+            <div class="bank">
+              <div>
+                Bank: <span id="balance"></span>
+              </div>
+              <input id="input-name" placeholder="PLAYER NAME" type="text">
+              <button id="btn-cashout" class="btn btn-cashout" onclick="cashout();">CASH OUT</button>
+            </div>
+
+            <button id="btn-bet" class="btn btn-bet" onclick="initialDeal()">
+              Bet
+            </button>
+            <input id="input-bet" type="number" class="input-bet" min="5" value="10" /><br />
+            <button
+                    disabled
+                    id="btn-hit"
+                    class="btn btn-hit"
+                    onclick="addCard('playerCards');">
+              Hit
+            </button>
+            <button disabled id="btn-stand" class="btn btn-stand" onclick="stand()">
+              Stand
+            </button>
+            <button class="btn-hint" onclick="hint()">Hint</button>
+          </div>
+        </div>
+      </section>
+
+    </div>
+    <div class="dialog hidden">
+      <div class="dialog-message"></div>
+      <button class="btn-dialog-close" onclick="closeDialog()">OK</button>
+    </div>
+
+    <script src="blackjack.js"></script>
+  </body>
+</html>

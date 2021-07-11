@@ -1,0 +1,27 @@
+version: '3.8' # specify docker-compose version
+
+# Define the services/ containers to be run
+services:
+  nest:
+    container_name: nest
+    build: black-jack-api # specify the directory of the Dockerfile
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    image: mongo
+    container_name: mongo
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: nest
+    volumes:
+      - data-volume:/data/db
+  frontend:
+    container_name: frontend
+    build: black-jack # specify the directory of the Dockerfile
+    ports:
+      - "80:80" # specify port mapping
+volumes:
+  data-volume:
