@@ -21,7 +21,8 @@ let bet,
     balance,
     initBalance = 500,
     i = 1000;
-const URL = "http://localhost:3000/players"
+const hostname = window.location.hostname;
+const URL = `http://${hostname}:3000/players`
 
 const el = {
   bet: document.getElementById("input-bet"),
