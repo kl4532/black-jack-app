@@ -17,9 +17,9 @@ COPY .env .env
 EXPOSE 3000
 
 # PROD
-#RUN npm ci --only=production
+RUN npm ci --only=production
 #CMD [ "npm", "run", "start:prod"]
 
 # DEV
-CMD [ "npm", "run", "start:dev"]
+CMD [ "npm", "run", "start:prod"]
 
